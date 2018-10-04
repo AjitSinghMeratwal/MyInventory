@@ -1,0 +1,88 @@
+html {
+  height: 100%;
+}
+* {
+box-sizing: border-box;
+}
+
+#myInput {
+background-position: 10px 10px;
+background-repeat: no-repeat;
+width: 20%;
+font-size: 16px;
+padding: 10px 10px 6px 20px;
+border: 1px solid #ddd;
+margin-bottom: 12px;
+}
+
+
+
+
+/* Stack toolbar and content on top of each other. */
+.demo-body {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  min-height: 100%;
+}
+/* Place drawer and main next to each other. */
+.demo-content {
+  display: flex;
+  flex: 1 1 auto;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+
+.demo-main {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.page-footer{
+   bottom: 0;
+   width: 100%;
+   position: absolute;
+
+}
+mat-card-header {
+    display: flow-root;
+  }
+
+
+modal
+{
+
+display: none;
+}
+.modalpopup
+{
+position:absolute;
+margin-left: 25%;
+width:60%;
+z-index: 1000;
+overflow: auto;
+}
+.modal-body
+{
+padding: 20px;
+background: #fff;
+margin: 40px;
+
+}
+
+
+.modal-background
+{
+position: fixed;
+top: 0;
+right: 0;
+bottom: 0;
+left: 0;
+display: contents;
+background-color: #000;
+opacity: 0.75;
+z-index: 900;
+}

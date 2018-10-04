@@ -1,0 +1,162 @@
+<div class="mdc-typography demo-body">
+  <header class="mdc-toolbar mdc-toolbar--fixed">
+    <div class="mdc-toolbar__row" style="
+    padding:  7px;
+    ">
+    <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
+      <span class="mdc-toolbar__title catalog-title" style="font-size: 25px;
+      font-family: &quot;Roboto Mono&quot;, monospace;">MY STORE</span>
+
+
+      <a style="  margin-left: 50%;
+      font-size: xx-large;" >Hi! {{userlogged}}</a>
+      <button class="mdc-button mdc-button--raised mdc-ripple-upgraded" style="--mdc-ripple-fg-size:49.7344px;--mdc-ripple-fg-scale:2.01813;--mdc-ripple-fg-translate-start:17.1641px, -5.74219px;--mdc-ripple-fg-translate-end:16.5781px, -6.86719px;        margin-left: 5%;
+      width: 10%;
+      margin-top: 0.7%;
+      background-color: #E53935" (click)="logout()">
+      Logout
+    </button>
+  </section>
+</div>
+</header>
+
+<div class="demo-content mdc-toolbar-fixed-adjust" style="
+height:  90%;
+">
+<nav id="demo-drawer" class="mdc-drawer mdc-drawer--permanent demo-drawer" style="height: 93%;">
+  <div class="mdc-list-group">
+    <nav class="mdc-list" style="
+    padding: 10%;
+    background-color: #f9f5fe; height:15%;">
+    <a class="mdc-list-item mdc-list-item--selected demo-drawer-list-item" (click)="selectoption('')"  style="background-color: #ffffff;font-family: &quot;Roboto Mono&quot;;font-size:  16px;">
+      <b>INVENTORY DETAILS</b>
+    </a>
+  </nav>
+  <hr class="mdc-list-divider">
+  <nav class="mdc-list" style="
+  padding: 10%;
+  background-color: #f9f5fe;  height:15%;">
+  <a class="mdc-list-item demo-drawer-list-item" style="font-family: &quot;Roboto Mono&quot;;font-size: 16px;" (click)="selectoption('ACCOUNTS')">
+    <b style="padding-bottom: 10%;">ACCOUNTS</b>
+  </a>
+</nav>
+<hr class="mdc-list-divider">
+</div>
+</nav>
+
+
+<main class="demo-main" style="height: 93%;width:  100%;padding:  0%;">
+  <div *ngIf="(selected=='')">
+    <mat-card class="card" style="height:100%;padding: 0%;margin: 0%; ">
+      <mat-card-header class="header">
+        <div class="subheading-2 title mdc-elevation--z10" style="
+        background-color: #EF5350;
+        font-size: 25px;
+        padding-bottom:0%;
+        padding-top: 1.5%;
+        padding-left: 2%;"
+
+        >Inventory Details
+        <button class="mdc-button mdc-button--raised mdc-ripple-upgraded" style="--mdc-ripple-fg-size:49.7344px;--mdc-ripple-fg-scale:2.01813;--mdc-ripple-fg-translate-start:17.1641px, -5.74219px;--mdc-ripple-fg-translate-end:16.5781px, -6.86719px; margin-left: 40%;
+        width: 15%;background-color: #388E3C;" (click)="addModal('modal-popup')">
+        + ADD NEW
+      </button>
+
+      <input type="text" id="myInput" placeholder="Search for names.."style="padding: 0% 0% 0% 2%;" title="Type in a name"  [(ngModel)]="searchText" (keydown)="search($event)">
+      <i title="search"style="cursor: pointer; font-size:30px"class="paa" (click)="search($event)" class="material-icons">search</i>
+
+      <modal  id="modal-popup" (onSave)="final($event)">
+          <div class="modalpopup">
+            <div style="border:solid;background-color:#6200ee;height:50px;width:89.8%;margin-left:5.1%">
+              <a style="margin-left:3%;font-size:xx-large;color:	#ffffff" >{{selected_option}}</a>
+              <ul class="right hide-on-med-and-down">
+                <li><i title="close" style="cursor: pointer" (click)="closeModal('modal-popup')" class="material-icons" >close</i></li>
+              </ul>
+            </div>
+              <div class="modal-body" style="margin-top: 0px;border: solid">
+                <form class="col s12">
+                  <div class="row" >
+                    <div class="input-field col s12">
+                      <input  placeholder="" id="Name" type="text" name="first" [(ngModel)]="schema.Name" >
+                      <label for="Name">Name</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input placeholder="" id="Unit" type="text" name="second" [(ngModel)]="schema.Unit" >
+                      <label for="Unit">Unit</label>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input placeholder="" id="Quantity" type="number"  name="third"  [(ngModel)]="schema.Quantity">
+                      <label for="Quantity">Quantity</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <input placeholder="" id="UnitPrice" type="number"  name="fourth" [(ngModel)]="schema.Unit_Price" >
+                      <label for="UnitPrice">UnitPrice</label>
+                    </div>
+                  </div>
+
+                </form>
+                <div class="modal-footer">
+                  <button class="mdc-button mdc-button--raised mdc-ripple-upgraded" style="cursor: pointer" (click)="saveModal('modal-popup',true);">Save</button>
+                </div>
+              </div>
+          </div>
+          <div class="modal-background"></div>
+      </modal>
+
+    </div>
+  </mat-card-header>
+
+
+
+  <mat-card-content>
+    <table class="centered highlight responsive-table bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Unit</th>
+          <th>Quantity</th>
+          <th>Unit Price</th>
+          <th>Total Amount</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let idata of inv_data let j = index" (click)="onSelect(idata,j)">
+        <tr>
+          <td>{{idata.Name}}</td>
+          <td>{{idata.Unit}}</td>
+          <td>{{idata.Quantity}}</td>
+          <td>{{idata.Unit_Price}}</td>
+          <td>{{idata.Total_Amount}}</td>
+          <td>
+            <i title="edit" style="cursor: pointer" class="material-icons" (click)="edit(idata,j)">edit</i>
+            <i title="delete" style="cursor: pointer" class="material-icons"(click)="delete(idata,j)">close</i>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </mat-card-content>
+</mat-card>
+</div>
+<mat-card class="card" style="height:0%;padding: 0%;margin: 0%; ">
+  <div *ngIf="(selected=='ACCOUNTS')">
+    <h1 style="color: red; margin-top: 10%;padding-left: 10%">UNDER DOVELOPMENT</h1>
+  </div>
+
+</mat-card>
+</main>
+
+
+<footer class="page-footer" style="background-color: #6200ee; padding-top:1.3%;
+padding-bottom:1.1%; ">
+<div class="container white-text" style="padding-left: 30%;">
+  © 2018 Company , Inc.
+</div>
+</footer>
+</div>

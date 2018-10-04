@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+$mdc-theme-primary: #6200ee; // change primary color example
+$mdc-theme-secondary: #6200ee; // change secondary color example
+
+@import "~@angular-mdc/theme/material";
+
+body.modal-open {
+height: 5%;
+overflow: hidden;
+
+}

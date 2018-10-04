@@ -1,0 +1,16 @@
+{
+  "details": [
+    {
+      "password": "support",
+      "name": "Support_User",
+      "emailid":"support@mystore.com"
+
+    },
+    {
+      "password": "admin",
+      "name": "Administrator",
+      "emailid":"admin@mystore.com"
+    }
+
+  ]
+}

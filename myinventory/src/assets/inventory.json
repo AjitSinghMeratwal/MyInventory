@@ -1,0 +1,19 @@
+
+{
+  "idata": [
+    {
+      "Name": "Nike Sneakers",
+      "Unit": "pieces",
+      "Quantity": 25,
+      "Unit_Price": 4000,
+      "Total_Amount": 10000
+    },
+    {
+      "Name": "Pencil",
+      "Unit": "dozen",
+      "Quantity": 5,
+      "Unit_Price":  100,
+      "Total_Amount": 500
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+
+  <header class="mdc-toolbar mdc-elevation--z10">
+    <div class="mdc-toolbar__row">
+      <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
+        <span class="mdc-toolbar__title">MY STORE</span>
+      </section>
+    </div>
+  </header>
+  <main>
+
+    <div  style="padding-top:40px" class="container">
+      <div class="container">
+        <div class="container">
+      <div class="mdc-card mdc-elevation--z20">
+        <div class="mdc-card__media mdc-card__media--square ">
+          <div class="mdc-card__media-content ">Login</div>
+        </div>
+        <div class="row">
+           <div class="col s12">
+             <div class="row">
+               <div class="input-field col s12">
+                 <input id="email" type="email" class="validate" [(ngModel)]="email_id" required>
+                 <label for="email"data-success="Success">Email</label>
+               </div>
+             </div>
+             <div class="row">
+           <div class="input-field col s12">
+             <input id="password" type="password" class="validate" minlength="5"maxlength="12" [(ngModel)]="password_id" required>
+             <label for="password">Password</label>
+           </div>
+         </div>
+    <div class="row">
+        <a (click)="submit()"type="submit" name="action" class="waves-effect waves-light btn">Login</a>
+    </div>
+  </div>
+         </div>
+      </div>
+      </div>
+    </div>
+    </div>
+
+
+  </main>
+  <footer class="page-footer">
+           <div class="container white-text">
+           � 2018 Company , Inc.
+         </div>
+
+       </footer>
